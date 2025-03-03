@@ -45,23 +45,31 @@
     
     <section id="projects" class="container py-5">
         <h2>Projects</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">E-Portal for Court Case Management using MERN</h5>
-                        <p class="card-text">A web-based platform to manage court cases efficiently using the MERN stack.</p>
+        <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">E-Portal for Court Case Management using MERN</h5>
+                            <p class="card-text">A web-based platform to manage court cases efficiently using the MERN stack.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Domain-Specific Chatbot using LLM</h5>
+                            <p class="card-text">An AI-powered chatbot tailored for specific domains, utilizing LLM for intelligent responses.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Domain-Specific Chatbot using LLM</h5>
-                        <p class="card-text">An AI-powered chatbot tailored for specific domains, utilizing LLM for intelligent responses.</p>
-                    </div>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </section>
     
