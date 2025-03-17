@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Go to Top Button */
+        #goToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        #goToTopBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #232f3e;
+            color: white;
+            padding: 40px 0;
+        }
+
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        footer h5 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function(event) {
+                    if (this.getAttribute("href").startsWith("#")) {
+                        event.preventDefault();
+                        document.querySelector(this.getAttribute("href")).scrollIntoView({
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+            // Login form validation
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return;
+                }
+
+                if (email.length < 8) {
+                    alert("Email must be at least 8 characters long.");
+                    return;
+                }
+
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long.");
+                    return;
+                }
+
+                alert("Login successful!");
+            });
+
+            // Go to Top Button
+            const goToTopBtn = document.getElementById("goToTopBtn");
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    goToTopBtn.style.display = "block";
+                } else {
+                    goToTopBtn.style.display = "none";
+                }
+            };
+
+            goToTopBtn.addEventListener("click", function() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">ShopEase</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="bg-primary text-white text-center py-5">
+        <h1>Welcome to ShopEase</h1>
+        <p>Your one-stop shop for everything!</p>
+    </header>
+
+    <div id="about" class="container mt-5">
+        <h2>About Us</h2>
+        <p>Learn more about our journey and mission.</p>
+    </div>
+
+    <div id="products" class="container mt-5">
+        <h2>Featured Products</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.dpreview.com/files/p/articles/6269402639/canon_eosr8.jpeg" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Best quality product available.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.nyip.edu/media/zoo/images/6-cameras-for-new-photographers_0942096857216f4144e5624dc2d78b8b.png" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">Top-rated product with premium features.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/LEI0440_Leica_IIIf_chrom_-_Sn._580566_1951-52-M39_Blitzsynchron_front_view-6531_hf-.jpg" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">Unbeatable price for a limited time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="partners" class="container mt-5">
+        <h2>Our Partners</h2>
+        <p>Meet our trusted partners.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Amazon" class="img-fluid" style="max-width: 150px;">
+                <p>Amazon</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/2560px-EBay_logo.svg.png" alt="eBay" class="img-fluid" style="max-width: 150px;">
+                <p>eBay</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV7vKDmatFLWrbT0tppp7DOd0h12FDKj7vNg&s" alt="Shopify" class="img-fluid" style="max-width: 150px;">
+                <p>Shopify</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="container mt-5">
+        <h2>Contact Us</h2>
+        <p>Get in touch with our team.</p>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="emailContact" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailContact" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Get to Know Us</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Releases</a></li>
+                        <li><a href="#">ShopEase Science</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Connect with Us</h5>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Make Money with Us</h5>
+                    <ul>
+                        <li><a href="#">Sell on ShopEase</a></li>
+                        <li><a href="#">Become an Affiliate</a></li>
+                        <li><a href="#">Advertise Your Products</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Let Us Help You</h5>
+                    <ul>
+                        <li><a href="#">Your Account</a></li>
+                        <li><a href="#">Returns Centre</a></li>
+                        <li><a href="#">100% Purchase Protection</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 ShopEase. All rights reserved.</p>
+                <!-- Extra Anchor Tag for Go to Top -->
+                <p><a href="#home" id="footerGoToTop">Go to Top</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Go to Top Button -->
+    <button id="goToTopBtn" title="Go to top">↑</button>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", function(event) {
+                if (this.getAttribute("href").startsWith("#")) {
+                    event.preventDefault();
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    
+        // Smooth scrolling for the footer "Go to Top" link
+        document.getElementById("footerGoToTop").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    
+        // Login form validation
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+    
+            if (email.length < 8) {
+                alert("Email must be at least 8 characters long.");
+                return;
+            }
+    
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return;
+            }
+    
+            alert("Login successful!");
+        });
+    
+        // Go to Top Button
+        const goToTopBtn = document.getElementById("goToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                goToTopBtn.style.display = "block";
+            } else {
+                goToTopBtn.style.display = "none";
+            }
+        };
+    
+        goToTopBtn.addEventListener("click", function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        });
+    });</script>
+</body>
+</html>
