@@ -57,6 +57,22 @@
         footer ul li {
             margin-bottom: 10px;
         }
+
+        /* Gallery Section Styles */
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery .col-md-4 {
+            margin-bottom: 20px;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -69,6 +85,14 @@
                             behavior: "smooth"
                         });
                     }
+                });
+            });
+
+            // Smooth scrolling for the footer "Go to Top" link
+            document.getElementById("footerGoToTop").addEventListener("click", function(event) {
+                event.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
                 });
             });
 
@@ -126,6 +150,7 @@
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
@@ -176,6 +201,39 @@
             </div>
         </div>
     </div>
+
+ <!-- Gallery Section -->
+<div id="gallery" class="container mt-5">
+    <h2>Gallery</h2>
+    <div class="row gallery">
+        <!-- Nature Images -->
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nature Image 1">
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nature Image 2">
+        </div>
+
+        <!-- Technology Images -->
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Technology Image 1">
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Technology Image 2">
+        </div>
+
+        <!-- City Images -->
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="City Image 1">
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="City Image 2">
+        </div>
+
+
+ 
+    </div>
+</div>
 
     <div id="partners" class="container mt-5">
         <h2>Our Partners</h2>
@@ -294,67 +352,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function() {
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", function(event) {
-                if (this.getAttribute("href").startsWith("#")) {
-                    event.preventDefault();
-                    document.querySelector(this.getAttribute("href")).scrollIntoView({
-                        behavior: "smooth"
-                    });
-                }
-            });
-        });
-    
-        // Smooth scrolling for the footer "Go to Top" link
-        document.getElementById("footerGoToTop").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    
-        // Login form validation
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-    
-            if (email.length < 8) {
-                alert("Email must be at least 8 characters long.");
-                return;
-            }
-    
-            if (password.length < 6) {
-                alert("Password must be at least 6 characters long.");
-                return;
-            }
-    
-            alert("Login successful!");
-        });
-    
-        // Go to Top Button
-        const goToTopBtn = document.getElementById("goToTopBtn");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                goToTopBtn.style.display = "block";
-            } else {
-                goToTopBtn.style.display = "none";
-            }
-        };
-    
-        goToTopBtn.addEventListener("click", function() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-        });
-    });</script>
 </body>
 </html>
